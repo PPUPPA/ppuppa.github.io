@@ -1,3 +1,172 @@
 @charset "UTF-8";
 
 /* common */
+body, button, input, select, table, textarea, pre{font-family:'Nanum Gothic','Malgun Gothic',Arial,sans-serif;letter-spacing:0;}
+
+/* default table */
+.default-table{
+  width:100%;
+}
+.default-table th,.default-table td{
+  padding:9px;
+  border:1px solid #E9E9E9;
+  text-align:center;
+  line-height:1.5;
+}
+.default-table th{
+  font-weight:700;
+}
+
+/* disclaimer */
+.disclaimer{
+  margin-top:16px;
+}
+.disclaimer-item{
+  position:relative;
+  padding-left:20px;
+  line-height:1.6;
+  letter-spacing:-.5px;
+}
+.disclaimer-item:before{
+  position:absolute;
+  top:0;
+  left:4px;
+  content:'※';
+}
+.disclaimer-item.divider_top{
+  margin-top:16px;
+}
+.disclaimer-item .notice{
+  display:block;
+}
+
+.main{
+  max-width:870px;
+  width:90%;
+  margin:0 auto;
+}
+
+/* page contents */
+.page_contents{
+  position:relative;
+  margin-top:20px;
+}
+
+/* page breadcrumb */
+.awd_conTitle_Wrap{
+  position:absolute;
+  top:0;
+  right:0;
+}
+.awd_conTitle_locationWrap{
+  font-size:0;
+}
+.awd_conTitle_Lomenu{
+  display:inline-block;
+  font-size:14px;
+  color:#767676;
+  line-height:45px;
+}
+.awd_conTitle_Lomenu:not(:first-child):before{
+  display:inline-block;
+  margin:0 5px;
+  content:'>';
+}
+.awd_conTitle_Lomenu a{
+  color:#767676;
+}
+.awd_conTitle_selectMenu a{
+  font-weight:700;
+}
+
+/* page_inner */
+.page_inner_wrap, .page_inner_wrap button,.page_inner_wrap input,.page_inner_wrap select,.page_inner_wrap table, .page_inner_wrap textarea,.page_inner_wrap pre{font-family:'Noto Sans KR','Malgun Gothic',Arial,sans-serif;}
+
+.page_inner_wrap{
+  width:840px;
+}
+.page_inner .awd_conTitle_tit{
+  margin-bottom:26px;
+  border-bottom:1px solid #f4f4f4;
+  font-size:20px;
+  font-weight:600;
+  color:#2f2f2f;
+  line-height:45px;
+}
+.page_inner .page_article-title{
+  position:relative;
+  margin-bottom:14px;
+  padding-left:12px;
+  font-size:22px;
+  font-weight:400;
+  color:#2481b6;
+  line-height:1.6;
+  letter-spacing:0;
+}
+.page_inner .page_article-title:before{
+  position:absolute;
+  top:10px;
+  left:3px;
+  width:4px;
+  height:18px;
+  background:url(http://www.sanbonjeil.kr/user/saveDir/awc/17/P/0/image_179081.png) no-repeat 0 50%;
+  content:'';
+}
+
+/* section-article */
+.section-article:not(:first-child){
+  margin-top:20px;
+}
+
+/* section-schedule */
+.table-schedule .col1{
+  width:11.1%;
+}
+.table-schedule col:not(.col1){
+  width:12.7%;
+}
+.table-schedule thead th{
+  background:#f8f8f8;
+}
+.table-schedule thead th:first-child{
+  background:#C5D6D8;
+  color:#555;
+}
+.table-schedule th span{
+  display:block;
+}
+.table-schedule tbody th{
+  color:#666;
+}
+
+.schedule-disclaimer{
+  font-size:13px;
+  color:#db3535;
+}
+
+/* section childbirth */
+.table-childbirth th, .table-childbirth td{
+  color:#666;
+}
+.table-childbirth .col1{
+  width:33%;
+}
+.table-childbirth .col2{
+  width:67%;
+}
+
+.childbirth-disclaimer{
+  font-size:12px;
+  font-weight:400;
+  color:#4f7b92;
+}
+
+/* footer */
+.footer{
+  margin-top:100px;
+}
+.footer small{
+  font-size:12px;
+  font-style:italic;
+  color:#767676;
+}
