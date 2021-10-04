@@ -1,0 +1,347 @@
+@charset "UTF-8";
+/* common */
+/* default btn */
+.container .section-login .btn-submit {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #ffbb00;
+  background: -webkit-gradient(linear, left top, right top, color-stop(1%, #ffbb00), to(#ff6600));
+  background: linear-gradient(to right, #ffbb00 1%, #ff6600 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$btn_color1', endColorstr='$btn_color2',GradientType=1 );
+  border-radius: 52px;
+  color: #fff;
+  -webkit-box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+  font-size: 0;
+  vertical-align: middle;
+  outline: 0;
+}
+
+.container .section-login .btn-submit > span {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.9px;
+  line-height: 1.7;
+}
+
+.container .section-login .btn-submit > span.has_ico {
+  position: relative;
+  padding-right: 14px;
+}
+
+.container .section-login .btn-submit > span.has_ico:before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 7px;
+  height: 12px;
+  content: '';
+}
+
+@media screen and (max-width: 1024px) {
+  .container .section-login .btn-submit {
+    padding: 6px 14px;
+  }
+  .container .section-login .btn-submit > span {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .container .section-login .btn-submit {
+    padding: 6px 14px;
+  }
+  .container .section-login .btn-submit > span {
+    font-size: 14px;
+  }
+}
+
+.header, .footer {
+  text-shadow: 0 0 2px #fff, 1px 1px 4px #fff;
+  text-shadow: 0 0 3px white, 0 0 2px rgba(255, 255, 255, 0.6), 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.footer .music-link:hover .ico-music, .footer .music-link:focus .ico-music {
+  display: inline-block;
+  -webkit-animation: flip 2s ease-in infinite;
+  animation: flip 2s ease-in infinite;
+}
+
+@-webkit-keyframes flip {
+  100% {
+    -webkit-transform: rotateY(360deg);
+  }
+}
+
+@keyframes flip {
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+
+/* base */
+.hidden {
+  display: none;
+}
+
+/* background로 적용할 경우 */
+html, body, .main {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.main:before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  content: '';
+  opacity: .5;
+}
+
+/* components */
+/* header */
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 16px 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.header .now_wrap {
+  line-height: 1.2;
+}
+
+.header .now_wrap .today {
+  display: block;
+  font-size: 22px;
+}
+
+.header .now_wrap .clock {
+  display: block;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.header .weather {
+  position: relative;
+  font-size: 0;
+}
+
+.header .weather:before {
+  position: absolute;
+  top: 23px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ffbb00;
+  content: '';
+}
+
+.header .weather-state, .header .weather-temp, .header .weather-locate {
+  line-height: 1;
+}
+
+.header .weather-state, .header .weather-temp {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.header .weather-state {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.header .weather-state:after {
+  display: inline-block;
+  margin-left: 1px;
+  -webkit-transform: translateY(-3px) rotate(8deg);
+          transform: translateY(-3px) rotate(8deg);
+  content: ',';
+}
+
+.header .weather-temp {
+  margin-left: 8px;
+  font-size: 18px;
+  color: #444;
+  text-align: right;
+}
+
+.header .weather-locate {
+  display: block;
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: right;
+  font-style: italic;
+  opacity: .8;
+}
+
+.header .weather-locate:before {
+  content: '@';
+}
+
+/* footer */
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 16px 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.footer .music-link {
+  display: block;
+}
+
+.footer .music-link .ico-music {
+  font-style: normal;
+}
+
+.footer .music .today_music {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.footer .music-wrap {
+  font-size: 0;
+  font-style: italic;
+}
+
+.footer .music-text, .footer .music-cite {
+  display: inline-block;
+}
+
+.footer .music-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer .music-cite {
+  margin-left: 4px;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* main */
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container {
+  width: 80%;
+  padding: 40px;
+  background: #fff;
+  border-radius: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* login */
+  /* todo */
+}
+
+.container .section-login {
+  text-align: center;
+}
+
+.container .section-login .inp_txt_wrap, .container .section-login .inp_txt_wrap .inp_txt {
+  border-radius: 6px;
+  overflow: hidden;
+  outline-color: #ff6600;
+}
+
+.container .section-login .btn-submit {
+  margin-top: 40px;
+}
+
+.container .section-todo .greeting {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.container .section-todo .greeting-hi {
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 4px solid #ffbb00;
+}
+
+.container .section-todo .username {
+  color: #ff6600;
+  text-transform: capitalize;
+}
+
+.container .section-todo #todo-list {
+  padding-top: 10px;
+}
+
+.container .section-todo #todo-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  padding: 10px 10px;
+  -webkit-transition: background .8s;
+  transition: background .8s;
+}
+
+.container .section-todo #todo-list li:hover, .container .section-todo #todo-list lifocus {
+  background: #f6f6f6;
+}
+
+.container .section-todo #todo-list li button {
+  margin-left: 8px;
+  font-weight: 700;
+  color: #ff6600;
+  line-height: 1;
+}

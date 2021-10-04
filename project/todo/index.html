@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/_fav/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/_fav/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" href="img/_fav/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" href="img/_fav/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" href="img/_fav/android-chrome-512x512.png" sizes="512x512">
+  <meta name="description" content="새벽의 생각 투두 리스트">
+  <meta property="og:image" content="img/5.jpg">
+  <meta property="og:title" content="Thoughts of dawn">
+  <meta property="og:description" content="새벽의 생각 투두 리스트">
+  
+  <!-- settings -->
+  <link rel="stylesheet" href="fonts/font.css">
+  <link rel="stylesheet" href="css/sunny_general.css">
+  <script src="js/jquery-1.12.3.min.js"></script>
+  <script src="js/sunny_general.js"></script>
+  
+  <!-- project -->
+  <link rel="stylesheet" href="css/common.css">
+  
+  <title>Thoughts of dawn</title>
+</head>
+<body>
+  <main role="main" class="main">
+    
+    <!-- header -->
+    <header id="header" class="header">
+      <h1 class="ir_text">Thoughts of dawn</h1>
+      <div class="now_wrap">
+        <span class="today">1월 1일 일요일</span>
+        <span id="clock" class="clock">00:00:00 AM</span>
+      </div>
+      <div id="weather" class="weather">
+        <span class="weather-state">Unknown</span>
+        <span class="weather-temp">0.0°C</span>
+        <span class="weather-locate">Somewhere</span>
+      </div>
+    </header>
+    <!-- // header -->
+
+    <div class="container">
+      <!-- step1 : section-login -->
+      <section class="section-login">
+        <form id="login-form" class="login-form hidden">
+          <div class="inp_txt_wrap">
+            <label for="inp-login">이름을 입력해주세요.</label>
+            <input type="text" id="inp-login" name="inp_txt" class="inp_txt" title="이름을 입력해주세요." required maxlength="15">
+          </div>
+          <button class="btn-submit" type="submit"><span>Log In</span></button>
+        </form>
+        
+      </section>
+      <!-- // step1 : section-login -->
+      
+      <!-- step2 : section-todo -->
+      <section class="section-todo hidden">
+        <h2 id="greeting" class="greeting"><span class="greeting-hi">Thoughts of Username.</span></h2>
+
+        <form id="todo-form" class="todo-form">
+          <div class="inp_txt_wrap">
+            <label for="inp-todo">오늘의 할 일은?</label>
+            <input type="text" id="inp-todo" name="inp_txt" class="inp_txt" title="오늘의 할 일을 입력한 후 엔터 키를 눌러주세요." required>
+          </div>
+        </form>
+        
+        <ul id="todo-list"></ul>
+      </section>
+      <!-- // step2 : section-todo -->
+    </div>
+    
+    <!-- footer -->
+    <footer id="footer" class="footer">
+      <div id="music" class="music">
+        <a class="music-link" href="#" target="_blank" title="새창열림, 유튜브 뮤직">
+          <strong class="today_music"><i class="ico-music">🎵</i> 오늘의 음악</strong>
+          <span class="music-wrap">
+            <span class="music-text"></span>
+            <cite class="music-cite"></cite>
+          </span>
+        </a>
+      </div>
+      <div class="footer-info">
+        <small class="copyrights">&copy; Sunny</small>
+      </div>
+    </footer>
+    <!-- // footer -->
+  </main>
+
+  <!-- project javascript -->
+  <script src="js/greetings.js"></script>
+  <script src="js/now.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/todo.js"></script>
+  <script src="js/weather.js"></script>
+</body>
+</html>

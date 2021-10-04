@@ -1,0 +1,130 @@
+/* header */
+.header{
+  display:flex;
+  width:100%;
+  padding:16px 10px;
+  justify-content:space-between;
+  align-items:flex-start;
+  box-sizing:border-box;
+  
+  @extend %text_shadow-w;
+
+  .now_wrap{
+    line-height:1.2;
+    
+    .today{
+      display:block;
+      font-size:22px;
+    }
+    .clock{
+      display:block;
+      font-size:25px;
+      font-weight:700;
+    }
+  }
+
+  .weather{
+    position:relative;
+    font-size:0;
+
+      &:before{
+        position:absolute;
+        top:23px;
+        left:0;
+        width:100%;
+        height:2px;
+        background:#ffbb00;
+        content:'';
+      }
+
+    &-state,
+    &-temp,
+    &-locate{line-height:1;}
+
+    &-state,
+    &-temp{display:inline-block;vertical-align:bottom;}
+
+    &-state{
+      font-size:22px;
+      font-weight:700;
+
+      &:after{
+        display:inline-block;
+        margin-left:1px;
+        transform:translateY(-3px) rotate(8deg);
+        content:',';
+      }
+    }
+    &-temp{
+      margin-left:8px;
+      font-size:18px;
+      color:#444;
+      text-align:right;
+    }
+
+    &-locate{
+      display:block;
+      margin-top:12px;
+      font-size:15px;
+      text-align:right;
+      font-style:italic;
+      opacity:.8;
+
+      &:before{content:'@';}
+    }
+  }
+}
+
+/* footer */
+.footer{
+  display:flex;
+  width:100%;
+  padding:16px 10px;
+  justify-content:space-between;
+  align-items:flex-end;
+  box-sizing:border-box;
+
+  @extend %text_shadow-w;
+
+  .music{
+    &-link{
+      display:block;
+      
+      &:hover, &:focus{
+        .ico-music{
+          @extend %animation-flip;
+        }
+      }
+      
+      .ico-music{
+        font-style:normal;
+      }
+    }
+
+    .today_music{
+      display:block;
+      margin-bottom:8px;
+      font-size:20px;
+      font-weight:700;
+    }
+
+    &-wrap{
+      font-size:0;
+      font-style:italic;
+    }
+
+    &-text,
+    &-cite{
+      display:inline-block;
+    }
+    &-text{
+      font-size:16px;
+      font-weight:500;
+    }
+    &-cite{
+      margin-left:4px;
+      font-size:11px;
+      font-weight:400;
+    }
+  }
+}

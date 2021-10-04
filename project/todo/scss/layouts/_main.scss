@@ -1,0 +1,71 @@
+.main{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+}
+.container{
+  width:80%;
+  padding:40px;
+  background:#fff;
+  border-radius:8px;
+  box-sizing:border-box;
+
+  /* login */
+  .section-login{
+    text-align:center;
+
+    .inp_txt_wrap, .inp_txt_wrap .inp_txt{
+      border-radius:6px;
+      overflow:hidden;
+      outline-color:#ff6600;
+    }
+
+    .btn-submit{
+      margin-top:40px;
+      @extend %gradient_btn;
+    }
+  }
+  
+  /* todo */
+  .section-todo{
+    .greeting{
+      margin-bottom:40px;
+      text-align:center;
+
+      &-hi{
+        display:inline-block;
+        padding-bottom:4px;
+        border-bottom:4px solid $color-primary;
+      }
+    }
+    .username{
+      color:$btn_color2;
+      text-transform:capitalize;
+    }
+
+    #todo-list{
+      padding-top:10px;
+
+      li{
+        display:flex;
+        justify-content:space-between;
+        align-items:flex-start;
+        width:100%;
+        padding:10px 10px;
+        transition:background .8s;
+
+        &:hover, &focus{
+          background:#f6f6f6;
+        }
+
+        button{
+          margin-left:8px;
+          font-weight:700;
+          color:$btn_color2;
+          line-height:1;
+        }
+      }
+    }
+  }
+}
