@@ -148,7 +148,7 @@
 
 ### 라이트하우스 접근성 및 SEO 관련 분석 리포트
 
-[라이트하우스 리포트 링크](https://ppuppa.github.io/project/wa-table/__test/03-lighthouse.html)
+[라이트하우스 리포트 PDF 링크](https://ppuppa.github.io/project/wa-table/__test/03-lighthouse.pdf)
 
 <br><br>
 
