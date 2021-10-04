@@ -16,7 +16,7 @@
 
 5. [수정 페이지 구현](수정-페이지-구현)
 
-6. [문법 검사 결과](문법-검사-결과)
+6. [문법 검사 결과](문법-검사-결과)<br>
    6.1. [라이트하우스 접근성 및 SEO 관련 분석 리포트](라이트하우스-접근성-및-SEO-관련-분석-리포트)
 
 7. [진행 후기](진행-후기)
@@ -104,23 +104,21 @@
 ### 웹표준
 
 - [ ] HTML5 표준에서 사용하지 않는 부적합 기능이 사용되었는가?
-- [ ] HTML5 validator를 통과하는가?
-- [ ] CSS validator를 통과하는가?
+- [x] HTML5 validator를 통과하는가?
+- [x] CSS validator를 통과하는가?
 
 
 
 ### 웹접근성
 
-- [ ] 크로스 브라우징이 지원되는가?
-  - [ ] IE 9++
-  - [ ] FF/Chrome/Safari/Opera 최신
-  - [ ] Android
-  - [ ] IOS
-- [ ] `<table>`, `<tbody>`, `<tr>`, `<td>` 등 테이블의 필수 요소가 사용되었는가?
-- [ ] `<caption>`, `<summary>`, `<thead>`, `<tfoot>`, `<th>` 등 테이블의 선택 요소가 적절히 사용되었는가?
-- [ ] 테이블의 요소간 논리적 관계가 구조적으로 드러나도록 마크업 되었는가?
-  - [ ] `<th>`와 `<td>`로 제목과 내용이 구별되었는가?
-  - [ ] `<th>`의 `[scope]` 속성을 통해 흐름을 정의했는가?
+- [x] 크로스 브라우징이 지원되는가?
+  - [x] IE 9++
+  - [x] FF/Chrome/Safari/Opera 최신
+- [x] `<table>`, `<tbody>`, `<tr>`, `<td>` 등 테이블의 필수 요소가 사용되었는가?
+- [x] `<caption>`, `<summary>`, `<thead>`, `<tfoot>`, `<th>` 등 테이블의 선택 요소가 적절히 사용되었는가?
+- [x] 테이블의 요소간 논리적 관계가 구조적으로 드러나도록 마크업 되었는가?
+  - [x] `<th>`와 `<td>`로 제목과 내용이 구별되었는가?
+  - [x] `<th>`의 `[scope]` 속성을 통해 흐름을 정의했는가?
 
 
 
@@ -138,13 +136,13 @@
 1. HTML5 validator - [link](https://validator.w3.org/)
    ![html5_validator](__test/01-html5_validator.png)
 2. CSS validator - [link](https://jigsaw.w3.org/css-validator/)
-   ![css_validator]()
+   ![css_validator](__test/02-css_validator.png)
 
 
 
 ### 라이트하우스 접근성 및 SEO 관련 분석 리포트
 
-![]()
+[라이트하우스 리포트 링크](03-lighthouse-ppuppa.github.io.html)
 
 
 

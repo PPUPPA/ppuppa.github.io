@@ -109,7 +109,7 @@ body, button, input, select, table, textarea, pre{font-family:'Nanum Gothic','Ma
   left:3px;
   width:4px;
   height:18px;
-  background:url(http://www.sanbonjeil.kr/user/saveDir/awc/17/P/0/image_179081.png) no-repeat 0 50%;
+  background:url(../img/bullet.png) no-repeat 0 50%;
   content:'';
 }
 
