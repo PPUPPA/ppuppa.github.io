@@ -1,5 +1,5 @@
 const loginForm = document.querySelector('#login-form')
-const loginInput = document.querySelector('#login-form input')
+const loginInput = document.querySelector('#inp-login')
 const greeting = document.querySelector('#greeting .greeting-hi')
 const todoBox = document.querySelector('.section-todo')
 
@@ -17,7 +17,7 @@ function onLoginSubmit(event){
 function paintGreetings(username){
   greeting.innerHTML = `Thoughts of <span class="username">${username}</span>`
   todoBox.classList.remove(HIDDEN_CLASSNAME);
-  todoBox.classList.add(FLIP_CLASSNAME);
+  // todoBox.classList.add(FLIP_CLASSNAME);
 }
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);

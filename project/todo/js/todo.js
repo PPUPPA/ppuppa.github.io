@@ -1,5 +1,5 @@
 const toDoForm = document.querySelector("#todo-form");
-const toDoInput = toDoForm.querySelector("input");
+const toDoInput = toDoForm.querySelector("#inp-todo");
 const toDoList = document.querySelector("#todo-list");
 
 const TODOS_KEY = "todos"
@@ -14,6 +14,8 @@ function deleteToDo(event){
   const li = event.target.parentElement;
   if(confirm("정말로 삭제할까요?")){
     li.remove();
+    // Arrow function
+    // 함수를 더 짧고 간단하게 작성하는 방법..!
     toDos = toDos.filter(todo => todo.id !== parseInt(li.id));
     saveToDos();
   }else{
@@ -55,7 +57,5 @@ if(savedToDos !== null){
   const parsedToDos = JSON.parse(savedToDos);
   // console.log(parsedToDos);
   toDos = parsedToDos;
-  // Arrow function
-  // 함수를 더 짧고 간단하게 작성하는 방법..!
   parsedToDos.forEach(paintToDo);
 }

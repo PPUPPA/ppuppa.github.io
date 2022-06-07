@@ -15,7 +15,7 @@ function onGeoOk(position){
 }
 
 function onGeoError(){
-  alert("위치 권한이 없어 정보가 제공되지 않습니다.");
+  alert("위치 권한이 없어 날씨 정보가 제공되지 않습니다.");
 }
 
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
