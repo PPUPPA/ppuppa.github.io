@@ -12,8 +12,8 @@ export const contentEn: Record<string, string> = {
     'I started as a web publisher, and now build the front end of a cloud management platform with TypeScript and modern component-based frameworks.',
   '공공기관 웹 접근성 인증 프로젝트와 수십 건의 반응형 가상 전시 사이트를 퍼블리싱하며 마크업과 반응형 레이아웃의 기본기를 다졌고, 지금은 공통 컴포넌트 설계, 대용량 데이터 렌더링 최적화, 비동기 처리 개선처럼 화면 뒤의 구조를 다듬는 일에 집중하고 있습니다.':
     'Building accessibility-certified public sector sites and dozens of responsive virtual exhibitions gave me a solid foundation in markup and responsive layout. Today I focus on the structure behind the screen: shared component design, rendering large data sets efficiently, and improving async flows.',
-  '문예창작을 전공했습니다. 읽는 사람을 생각하며 글을 쓰듯, 다음에 이 코드를 읽을 동료와 화면을 쓰는 사용자를 함께 생각하며 코드를 작성합니다.':
-    'I majored in creative writing. Just as I write with the reader in mind, I write code thinking of both the teammate who will read it next and the user on the other side of the screen.',
+  '문예창작과 컴퓨터공학을 전공했습니다. 읽는 사람을 생각하며 글을 쓰듯, 다음에 이 코드를 읽을 동료와 화면을 쓰는 사용자를 함께 생각하며 코드를 작성합니다.':
+    'I majored in creative writing and computer engineering. Just as I write with the reader in mind, I write code thinking of both the teammate who will read it next and the user on the other side of the screen.',
   '마크업부터 설계까지': 'From markup to architecture',
   '시맨틱 마크업과 반응형 레이아웃을 직접 짜 온 경험 덕분에, 컴포넌트를 나눌 때 구조와 스타일까지 함께 고려합니다.':
     'Years of hand-writing semantic markup and responsive layouts mean I consider structure and styling together when I split components.',
@@ -210,8 +210,8 @@ export const contentEn: Record<string, string> = {
     'Total and per-role experience are calculated from employment dates, so the numbers can never disagree between documents',
   'Tailwind CSS v4 테마를 CSS 변수와 연결해 라이트 · 다크 모드를 변수 교체만으로 전환, 인쇄용 문서 스타일은 별도 CSS로 분리':
     'Tailwind CSS v4 theme mapped to CSS variables, so light/dark mode is just a variable swap; print styles live in separate CSS',
-  'react-i18next로 한국어 · 영어 지원 — 콘텐츠는 한국어 원본 하나, 영어는 문장 사전으로 관리':
-    'Korean/English support with react-i18next — one Korean content source plus an English sentence dictionary, with a script that flags missing translations',
+  'react-i18next로 한국어 · 영어 지원':
+    'Korean/English support with react-i18next',
   'Vite 멀티 페이지 빌드, 스크롤 연동 애니메이션, prefers-reduced-motion · 키보드 접근성 대응':
     'Vite multi-page build, scroll-linked animation, prefers-reduced-motion and keyboard accessibility support',
   'Puppeteer로 A4 PDF를 자동 생성하고, 연락처 등 개인정보는 로컬 PDF 빌드에서만 주입해 공개 사이트에는 노출되지 않도록 분리':
@@ -219,7 +219,54 @@ export const contentEn: Record<string, string> = {
   '무빙(Moving) — 영화관 예매 사이트': 'Moving — movie theater booking site',
   '영화 · 상영관 관리와 예매 기능을 갖춘 가상 영화관 사이트 (5인 팀 프로젝트, 그린아이티아카데미)':
     'A mock movie theater site with movie and screen management and booking (5-person team project, Green IT Academy)',
-  '메인, 영화, 공지사항, 공통 header/footer — 프론트엔드 및 백엔드': 'Main page, movies, notices and shared header/footer — front end and back end',
+  '메인 · 영화 · 공지사항 담당 — 사용자 화면과 관리자(백오피스) 화면의 프론트엔드 · 백엔드 개발, 메인 퍼블리싱':
+    'Owned the main page, movies and notices — front end and back end for both the user site and the admin back office, plus lead markup',
+  '메인 퍼블리셔로서 공통 레이아웃과 스타일을 시스템화해, 팀원들이 만든 화면이 이질감 없이 어우러지고 팀원은 기능 개발에 집중할 수 있도록 지원':
+    'As lead publisher, systematized the shared layout and styles so screens built by different teammates felt consistent and teammates could focus on features',
+  '메인: 상영 중인 영화 인기순 TOP 10 노출, YouTube API로 TOP 10 중 랜덤 영화의 예고편을 메인 비주얼에 재생, OpenWeatherMap API로 날씨별 장르를 매핑해 상영작 추천':
+    'Main page: top 10 movies now showing by popularity, a random top-10 trailer in the hero via the YouTube API, and weather-based genre recommendations via the OpenWeatherMap API',
+  '영화(관리자): TMDB API로 국내 상영작을 조회해 무빙에서 상영할 영화를 선택 · DB 등록, 상영 중 · 상영 중지 상태 전환(재개봉 대응), 상세 정보 조회 · 수정':
+    'Movies (admin): browse now-playing titles from the TMDB API and add the ones Moving will screen to the database, switch between showing and not showing (for re-releases), view and edit details',
+  '영화(사용자): 상영작 목록(인기순 · 가나다순 정렬, 검색)과 상세(스틸컷 캐러셀, 예고편, 예매 링크)':
+    'Movies (user): list of current titles (sort by popularity or title, search) and detail pages (still carousel, trailer, booking link)',
+  '공지사항: 관리자 등록 · 목록 · 상세 · 수정 · 삭제(일괄 삭제), 사용자 목록 · 상세 · 조회수 · 페이징':
+    'Notices: admin create, list, detail, edit and delete (including bulk delete); user list, detail, view count and paging',
+  '여러 API로 나뉜 영화 정보 조합':
+    'Combining movie data split across multiple APIs',
+  '비동기 처리':
+    'Async handling',
+  '영화 한 편의 정보가 TMDB의 여러 API(상세 · 출연진 · 등급 · 이미지 · 영상)로 나뉘어 있어, 여러 요청을 동시에 보내고 응답을 모아야 했습니다. API를 하나만 호출할 때는 문제가 없었지만, 여러 개를 함께 호출하는 데서 막혔습니다.':
+    'TMDB splits a single movie’s data across several APIs (details, credits, ratings, images, videos), so I had to send several requests at once and gather the responses. One call at a time was fine; combining several was where I got stuck.',
+  'Promise와 reduce 등 비동기 처리 방법을 찾아 익혀, 여러 응답을 모아 하나의 영화 데이터로 조합':
+    'Learned async patterns such as Promise and reduce, and merged the responses into a single movie record',
+  '조합한 데이터를 프로젝트에서 미리 정한 DB 컬럼명에 맞춰 변환해 저장':
+    'Mapped the merged data to the column names we had defined for our database before saving',
+  '관리자가 상영작을 선택하면 필요한 영화 정보가 한 번에 조합되어 DB에 등록되도록 했습니다.':
+    'When an admin picks a movie to screen, all the data it needs is assembled and saved to the database in one step.',
+  '다른 팀원이 의존하는 영화 테이블 설계':
+    'Designing a movie table the whole team depended on',
+  'DB 설계':
+    'Database design',
+  '제가 관리하는 영화 테이블을 다른 팀원 대부분이 호출해 사용했는데, 처음 설계할 때 상영 상태값을 고려하지 않아 나중에 추가해야 했습니다. 다른 테이블과 의존 관계가 생겨 영화 데이터를 삭제하기도 어려웠습니다.':
+    'Most teammates queried the movie table I owned, but I hadn’t planned a screening-status column at first and had to add it later. Dependencies with other tables also made deleting movies difficult.',
+  '영화를 삭제하는 대신 상영 중 · 상영 중지 상태로 관리하도록 바꾸고, 재개봉도 상태 전환으로 처리':
+    'Replaced deletion with a showing / not-showing status, and handled re-releases as a status change',
+  '다른 팀원의 기능을 깨뜨리지 않고 상영 여부를 관리할 수 있게 되었습니다.':
+    'We could manage what was screening without breaking teammates’ features.',
+  '여러 사람이 의존하는 테이블일수록 초기 설계를 꼼꼼히 해야 하고, 서비스의 기반이 되는 데이터는 삭제하기보다 상태로 남겨야 할 때가 있다는 것':
+    'The more people depend on a table, the more carefully it needs to be designed up front — and core data sometimes needs to stay, tracked by status, rather than be deleted.',
+  '마무리 단계에서야 시작한 Git 협업':
+    'Starting Git collaboration too late',
+  '실패에서 배운 점':
+    'Lesson from a mistake',
+  '처음부터 Git으로 협업하지 않고 거의 마무리 단계에서 merge를 시작해, 파일이 꼬이거나 팀원의 수정 사항이 반영되지 않은 파일로 덮어쓰는 일이 생겼습니다.':
+    'We didn’t use Git from the start and only began merging near the end, so files got tangled and teammates’ changes were sometimes overwritten.',
+  'pull로 최신 상태를 받은 뒤 작업하고, 파일을 합치기 전에 팀원과 수정 범위를 확인':
+    'Pulled the latest changes before working, and checked the scope of changes with teammates before merging',
+  '남은 기간 동안 충돌을 정리하며 프로젝트를 마무리했습니다.':
+    'We resolved the conflicts and finished the project in the remaining time.',
+  '협업 도구를 쓰더라도 내 파일과 다른 사람의 파일 버전을 교차 확인하는 습관과 커뮤니케이션이 중요하다는 것':
+    'Even with collaboration tools, the habit of cross-checking file versions and talking with teammates is what matters.',
 
   // ---------- 스킬 · 학력 ----------
   '반응형 웹': 'Responsive web',
