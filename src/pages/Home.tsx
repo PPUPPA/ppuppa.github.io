@@ -18,6 +18,7 @@ import {
   sideProjects,
   skills,
   trainings,
+  type Case,
   type Company,
 } from '../data/profile';
 import { useI18n } from '../i18n';
@@ -310,6 +311,59 @@ function About() {
   );
 }
 
+/** 펼치기 · 접기 버튼 (전체 프로젝트 목록 · 사이드 프로젝트 사례 공통) */
+function ExpandButton({ open, controls, onClick, children }: { open: boolean; controls: string; onClick: () => void; children: ReactNode }) {
+  return (
+    <button
+      type="button"
+      className="inline-flex items-center gap-2 justify-self-start rounded-full border border-dashed border-ink-3 px-4 py-2.5 text-sm font-semibold transition-colors duration-200 hover:border-solid hover:bg-surface"
+      aria-expanded={open}
+      aria-controls={controls}
+      onClick={onClick}
+    >
+      {children}
+      <span
+        className={cn(
+          'size-[7px] border-r-2 border-b-2 border-current transition-transform duration-300 ease-soft',
+          open ? 'translate-y-0.5 -rotate-135' : '-translate-y-0.5 rotate-45',
+        )}
+        aria-hidden="true"
+      />
+    </button>
+  );
+}
+
+function CasesToggle({ id, cases }: { id: string; cases: Case[] }) {
+  const { t } = useI18n();
+  const [open, setOpen] = useState(false);
+  const panelId = id.replace(/\W+/g, '-');
+  return (
+    <div className="mt-2 grid">
+      <ExpandButton open={open} controls={panelId} onClick={() => setOpen((v) => !v)}>
+        {open ? t('career.hideCases') : t('career.showCases', { count: cases.length })}
+      </ExpandButton>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id={panelId}
+            className="overflow-hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.45, ease: EASE }}
+          >
+            <div className="grid gap-2.5 pt-3">
+              {cases.map((c) => (
+                <CaseBlock key={c.title} item={c} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function ProjectLogToggle({ company }: { company: Company }) {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
@@ -318,22 +372,9 @@ function ProjectLogToggle({ company }: { company: Company }) {
   const id = `log-${company.id}`;
   return (
     <div className="mt-4">
-      <button
-        type="button"
-        className="inline-flex items-center gap-2 rounded-full border border-dashed border-ink-3 px-4 py-2.5 text-sm font-semibold transition-colors duration-200 hover:border-solid hover:bg-surface"
-        aria-expanded={open}
-        aria-controls={id}
-        onClick={() => setOpen((v) => !v)}
-      >
+      <ExpandButton open={open} controls={id} onClick={() => setOpen((v) => !v)}>
         {open ? t('career.hideLog') : t('career.showLog', { count: log.length })}
-        <span
-          className={cn(
-            'size-[7px] border-r-2 border-b-2 border-current transition-transform duration-300 ease-soft',
-            open ? 'translate-y-0.5 -rotate-135' : '-translate-y-0.5 rotate-45',
-          )}
-          aria-hidden="true"
-        />
-      </button>
+      </ExpandButton>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -495,29 +536,31 @@ function Career() {
           <h3 className="mb-[18px] text-[22px] font-extrabold tracking-[-0.02em]">Side Projects</h3>
           <ul className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-3.5">
             {sideProjects.map((p) => (
-              <li key={p.name}>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(
-                    card,
-                    'grid h-full gap-1.5 px-6 py-[22px] transition-[transform,border-color] duration-350 ease-soft hover:-translate-y-1 hover:border-accent',
-                  )}
-                >
-                  <span className="text-[17px] font-bold">{tc(p.name)}</span>
-                  <span className="text-[15px] text-ink-2">{tc(p.summary)}</span>
-                  {p.highlights && (
-                    <ul className="mt-1 mb-0.5 grid gap-[3px] text-sm text-ink-2">
-                      {p.highlights.map((h) => (
-                        <li key={h} className={dashItem}>
-                          {tc(h)}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  <span className="text-[13px] text-ink-3">{p.stack.join(' · ')}</span>
+              <li
+                key={p.name}
+                className={cn(
+                  card,
+                  'grid h-full content-start gap-1.5 px-6 py-[22px] transition-[border-color] duration-300 hover:border-accent',
+                )}
+              >
+                <a href={p.link} target="_blank" rel="noreferrer" className="group text-[17px] font-bold hover:text-accent-ink">
+                  {tc(p.name)}
+                  <span className={extArrow} aria-hidden="true">
+                    ↗
+                  </span>
                 </a>
+                <span className="text-[15px] text-ink-2">{tc(p.summary)}</span>
+                {p.highlights && (
+                  <ul className="mt-1 mb-0.5 grid gap-[3px] text-sm text-ink-2">
+                    {p.highlights.map((h) => (
+                      <li key={h} className={dashItem}>
+                        {tc(h)}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <span className="text-[13px] text-ink-3">{p.stack.join(' · ')}</span>
+                {p.cases && <CasesToggle id={`side-${p.name}`} cases={p.cases} />}
               </li>
             ))}
           </ul>

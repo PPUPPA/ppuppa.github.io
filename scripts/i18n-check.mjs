@@ -27,7 +27,10 @@ try {
       pr.cases?.forEach(addCase);
     }
   }
-  for (const s of profile.sideProjects) add(s.name, s.summary, s.role, s.highlights);
+  for (const s of profile.sideProjects) {
+    add(s.name, s.summary, s.role, s.highlights);
+    s.cases?.forEach(addCase);
+  }
   for (const g of profile.skills) add(g.group, g.items);
   for (const e of [...profile.education, ...profile.trainings]) add(e.name, e.detail);
   for (const c of profile.certificates) add(c.name, c.issuer);

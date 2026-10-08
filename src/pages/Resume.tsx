@@ -209,6 +209,7 @@ export function Resume() {
                 ))}
               </ul>
             )}
+            <Cases items={p.cases} />
             <p className="doc-project__stack">
               {p.stack.join(' · ')} · <a href={p.link}>{p.link.replace(/^https?:\/\//, '')}</a>
             </p>

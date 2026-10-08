@@ -42,6 +42,8 @@ export const ui = {
       role: '역할',
       showLog: '전체 프로젝트 {{count}}건 보기',
       hideLog: '목록 접기',
+      showCases: '문제 해결 사례 {{count}}건 보기',
+      hideCases: '사례 접기',
       logNote: '',
     },
     track: {
@@ -111,6 +113,8 @@ export const ui = {
       role: 'Role',
       showLog: 'Show all {{count}} projects',
       hideLog: 'Hide list',
+      showCases: 'Show {{count}} problem-solving stories',
+      hideCases: 'Hide stories',
       logNote: 'Project titles are shown as they appear on the Korean certificate.',
     },
     track: {

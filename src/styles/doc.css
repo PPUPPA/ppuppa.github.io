@@ -106,11 +106,11 @@
 
 /* ---------- 공통 ---------- */
 .doc-section {
-  margin-top: 6mm;
+  margin-top: 5mm;
 }
 
 .doc-section__title {
-  margin-bottom: 4mm;
+  margin-bottom: 3.5mm;
   padding-bottom: 1.5mm;
   border-bottom: 1.5px solid #1d2440;
   font-size: 13pt;
@@ -420,7 +420,7 @@
 
 .doc-list {
   display: grid;
-  gap: 2mm;
+  gap: 1.2mm;
 }
 
 .doc-list li {
