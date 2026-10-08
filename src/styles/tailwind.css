@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+/* 다크 모드는 OS 설정이 아니라 토글(<html data-theme="dark">)로만 */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* 색 값은 tokens.css 의 CSS 변수가 원본 — 테마 전환 시 변수만 바뀐다 */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-pub: var(--pub);
+  --color-pub-ink: var(--pub-ink);
+  --color-pub-soft: var(--pub-soft);
+  --color-sun: var(--sun);
+  --color-sun-soft: var(--sun-soft);
+  --color-seed: var(--seed);
+  --color-seed-2: var(--seed-2);
+  --color-gap: var(--gap);
+}
+
+@theme {
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-serif: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+
+  --breakpoint-sm: 35rem; /* 560px */
+  --breakpoint-md: 47.5rem; /* 760px */
+  --breakpoint-lg: 53.75rem; /* 860px */
+
+  /* 크기 클래스가 줄 간격을 바꾸지 않도록 — 본문 line-height(1.7)를 그대로 따른다 */
+  --text-xs--line-height: inherit;
+  --text-sm--line-height: inherit;
+  --text-base--line-height: inherit;
+  --text-lg--line-height: inherit;
+
+  --radius-card: 14px;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-spin-slow: spin 140s linear infinite;
+  --animate-seed-in: seed-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-wheel: wheel 1.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  --animate-grow: grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes seed-in {
+    from {
+      opacity: 0;
+      transform: scale(0);
+    }
+    to {
+      opacity: var(--seed-opacity, 1);
+      transform: scale(1);
+    }
+  }
+
+  @keyframes wheel {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+
+  @keyframes grow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* 페이지 공통 가로 폭 */
+@utility wrap {
+  width: min(1120px, 100% - 32px);
+  margin-inline: auto;
+}

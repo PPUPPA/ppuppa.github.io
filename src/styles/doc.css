@@ -1,0 +1,896 @@
+/* A4 문서 (이력서 · 경력기술서) */
+@page {
+  size: A4;
+  margin: 14mm 13mm 15mm;
+}
+
+.doc-page {
+  min-height: 100vh;
+  padding: 0 16px 64px;
+  background: #ece8dc;
+}
+
+.doc-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  /* 배경은 화면 전체 폭으로 깔아 종이 그림자를 덮고, 내용은 종이(210mm) 폭에 맞춘다 */
+  margin: 0 -16px 20px;
+  padding: 12px max(16px, calc((100% - 210mm) / 2 + 16px));
+  background: #ece8dc;
+  font-size: 14px;
+}
+
+.doc-toolbar__home {
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.doc-toolbar__tabs {
+  display: flex;
+  gap: 4px;
+  margin-inline: auto;
+  padding: 4px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.doc-toolbar__tabs a {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.doc-toolbar__tabs a[aria-current='page'] {
+  background: var(--ink);
+  color: #fff;
+}
+
+.doc-toolbar__print {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.paper {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 18mm 16mm;
+  background: #fff;
+  color: #1d2440;
+  box-shadow: 0 20px 60px -30px rgb(0 0 0 / 0.35);
+  font-size: 9.6pt;
+  line-height: 1.55;
+}
+
+.paper a {
+  color: inherit;
+}
+
+@media (max-width: 640px) {
+  .paper {
+    padding: 24px 18px;
+  }
+  .doc-toolbar__home {
+    display: none;
+  }
+  .doc-toolbar__tabs {
+    margin-left: 0;
+  }
+}
+
+@media print {
+  .doc-page {
+    padding: 0;
+    background: none;
+  }
+  .doc-toolbar {
+    display: none;
+  }
+  .paper {
+    max-width: none;
+    padding: 0;
+    box-shadow: none;
+  }
+  body {
+    background: #fff;
+  }
+}
+
+/* ---------- 공통 ---------- */
+.doc-section {
+  margin-top: 6mm;
+}
+
+.doc-section__title {
+  margin-bottom: 4mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 1.5px solid #1d2440;
+  font-size: 13pt;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  break-after: avoid;
+}
+
+.doc-break {
+  break-before: page;
+}
+
+@media screen {
+  .doc-break {
+    margin-top: 14mm;
+    padding-top: 10mm;
+    border-top: 1px dashed #ccc;
+  }
+}
+
+.doc-bullets {
+  display: grid;
+  gap: 0.3mm;
+}
+
+.doc-bullets li {
+  position: relative;
+  padding-left: 3.6mm;
+}
+
+.doc-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0.6mm;
+  top: 0.68em;
+  width: 1.3mm;
+  height: 1.3mm;
+  border-radius: 50%;
+  background: #868a9c;
+}
+
+.doc-bullets--strong {
+  font-weight: 600;
+  margin-bottom: 3mm;
+}
+
+.doc-bullets--strong li::before {
+  background: var(--accent);
+}
+
+.doc-muted {
+  color: #868a9c;
+  font-weight: 400;
+}
+
+.doc-note {
+  margin-top: 3mm;
+  font-size: 8.5pt;
+  color: #4c5370;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---------- 이력서 헤더 ---------- */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8mm;
+  padding-bottom: 6mm;
+  border-bottom: 1px solid #e8e1cf;
+}
+
+.doc-header__role {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--accent-ink);
+}
+
+.doc-header__name {
+  font-size: 28pt;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.doc-header__slogan {
+  margin-top: 2mm;
+  font-family: var(--font-serif);
+  color: #4c5370;
+}
+
+.doc-header__contact {
+  display: grid;
+  gap: 0.8mm;
+  font-size: 9pt;
+}
+
+.doc-header__contact li {
+  display: grid;
+  grid-template-columns: 14mm 1fr;
+}
+
+.doc-header__contact span {
+  color: #868a9c;
+}
+
+/* ---------- stats ---------- */
+.doc-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3mm;
+  margin-top: 6mm;
+}
+
+.doc-stats > div {
+  padding: 3mm 4mm;
+  border-radius: 2mm;
+  background: #f9f5e9;
+}
+
+.doc-stats dt {
+  font-size: 8.5pt;
+  color: #4c5370;
+}
+
+.doc-stats dd {
+  font-size: 14pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.doc-stats p {
+  font-size: 8pt;
+  color: #868a9c;
+}
+
+.doc-stats--boxed .is-primary {
+  background: var(--accent-soft);
+}
+
+/* ---------- 소개 ---------- */
+.doc-intro {
+  display: grid;
+  gap: 2mm;
+}
+
+.doc-strengths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3mm;
+  margin-top: 4mm;
+}
+
+.doc-strengths li {
+  display: grid;
+  align-content: start;
+  gap: 1mm;
+  padding: 3mm 3.5mm;
+  border: 1px solid #e8e1cf;
+  border-radius: 2mm;
+  font-size: 8.8pt;
+  color: #4c5370;
+}
+
+.doc-strengths strong {
+  font-size: 10pt;
+  color: #1d2440;
+}
+
+/* ---------- 경력 ---------- */
+.doc-exp {
+  display: grid;
+  grid-template-columns: 36mm 1fr;
+  gap: 5mm;
+  padding: 4mm 0;
+  border-top: 1px solid #e8e1cf;
+}
+
+.doc-exp:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.doc-exp__aside h3 {
+  font-size: 13pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.doc-exp__period {
+  font-variant-numeric: tabular-nums;
+  color: #4c5370;
+}
+
+.doc-exp__days {
+  font-weight: 700;
+  color: var(--accent-ink);
+}
+
+.doc-exp__role {
+  margin-top: 1.5mm;
+  font-weight: 600;
+}
+
+.doc-exp__dept {
+  font-size: 8.5pt;
+  color: #868a9c;
+}
+
+.doc-exp__desc {
+  margin-bottom: 1.5mm;
+  font-size: 9pt;
+  color: #868a9c;
+}
+
+.doc-exp__more {
+  margin-top: 2mm;
+  font-size: 9pt;
+  color: #4c5370;
+}
+
+.doc-project {
+  margin-top: 2.6mm;
+}
+
+.doc-project__head {
+  break-after: avoid;
+}
+
+.doc-project__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+
+.doc-project__head h4,
+.doc-project__head h5 {
+  font-size: 10.5pt;
+  font-weight: 700;
+}
+
+.doc-project__head span {
+  flex-shrink: 0;
+  font-size: 8.5pt;
+  color: #868a9c;
+  font-variant-numeric: tabular-nums;
+}
+
+.doc-project__summary {
+  color: #4c5370;
+}
+
+.doc-project__summary em {
+  font-style: normal;
+  color: #868a9c;
+}
+
+.doc-project__badge {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.doc-project .doc-bullets {
+  margin-top: 1mm;
+}
+
+.doc-project__stack {
+  margin-top: 0.4mm;
+  font-size: 8.5pt;
+  color: #868a9c;
+}
+
+.doc-project--flat + .doc-project--flat {
+  margin-top: 3mm;
+}
+
+/* ---------- 스킬 · 학력 ---------- */
+.doc-skills {
+  display: grid;
+  gap: 1.5mm;
+}
+
+.doc-skills > div {
+  display: grid;
+  grid-template-columns: 32mm 1fr;
+}
+
+.doc-skills dt {
+  font-weight: 700;
+}
+
+.doc-cols {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 8mm;
+}
+
+.doc-list {
+  display: grid;
+  gap: 2mm;
+}
+
+.doc-list li {
+  display: grid;
+  grid-template-columns: 30mm 1fr;
+  gap: 2mm;
+}
+
+.doc-list li > span {
+  font-size: 8.5pt;
+  color: #868a9c;
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.4mm;
+}
+
+.doc-list p {
+  font-size: 8.8pt;
+  color: #4c5370;
+}
+
+.doc-letter {
+  display: grid;
+  gap: 6mm;
+}
+
+.doc-letter h3 {
+  margin-bottom: 1.5mm;
+  font-size: 11pt;
+  font-weight: 700;
+}
+
+.doc-letter p + p {
+  margin-top: 2mm;
+}
+
+.doc-letter p {
+  text-align: justify;
+}
+
+/* ---------- 경력기술서 ---------- */
+.doc-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 4mm;
+  margin-bottom: 5mm;
+  border-bottom: 2.5px solid #1d2440;
+}
+
+.doc-title h1 {
+  font-size: 22pt;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+}
+
+.doc-title p {
+  color: #4c5370;
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+
+.doc-table th,
+.doc-table td {
+  padding: 1.8mm 2.2mm;
+  border: 1px solid #ddd5c2;
+  text-align: left;
+  vertical-align: top;
+}
+
+.doc-table thead th {
+  background: #f6f1e2;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.doc-table tbody th {
+  font-weight: 700;
+}
+
+.doc-table tfoot th,
+.doc-table tfoot td {
+  background: #fff4d1;
+  border-top: 1.5px solid #1d2440;
+}
+
+.doc-table tr {
+  break-inside: avoid;
+}
+
+.doc-table--info th {
+  width: 22mm;
+  background: #f6f1e2;
+}
+
+.doc-table--log {
+  font-size: 8.4pt;
+}
+
+.doc-table--log th,
+.doc-table--log td {
+  padding: 1.1mm 2mm;
+}
+
+.doc-table--log td:first-child {
+  width: 9mm;
+  color: #868a9c;
+}
+
+.doc-table--log td:nth-child(3) {
+  width: 46mm;
+  font-variant-numeric: tabular-nums;
+}
+
+.doc-table--log td:nth-child(4) {
+  width: 40mm;
+  color: #4c5370;
+}
+
+.doc-pill {
+  display: inline-block;
+  margin: 0 1mm 0.6mm 0;
+  padding: 0 1.8mm;
+  border-radius: 1mm;
+  font-size: 7.5pt;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.doc-pill--publishing {
+  background: var(--pub-soft);
+  color: var(--pub-ink);
+}
+
+.doc-pill--frontend {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+.doc-timeline {
+  margin-top: 5mm;
+  break-inside: avoid;
+}
+
+.doc-company {
+  margin-top: 7mm;
+}
+
+.doc-company:first-of-type {
+  margin-top: 0;
+}
+
+.doc-company + .doc-company {
+  margin-top: 9mm;
+}
+
+.doc-company__head {
+  break-inside: avoid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1mm 4mm;
+  padding: 3mm 4mm;
+  border-radius: 2mm;
+  background: #1d2440;
+  color: #fff;
+  break-after: avoid;
+}
+
+.doc-company__head h3 {
+  font-size: 12.5pt;
+  font-weight: 800;
+}
+
+.doc-company__head h3 span {
+  margin-left: 2.5mm;
+  font-size: 9pt;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.doc-company__head p {
+  font-size: 9pt;
+  font-variant-numeric: tabular-nums;
+}
+
+.doc-company__head strong {
+  color: var(--sun);
+}
+
+.doc-sub {
+  margin: 5mm 0 2mm;
+  font-size: 10.5pt;
+  font-weight: 800;
+  break-after: avoid;
+}
+
+.doc-project--boxed {
+  padding: 3mm 3.5mm;
+  border: 1px solid #e8e1cf;
+  border-radius: 2mm;
+}
+
+.doc-kv {
+  width: 100%;
+  margin-top: 1.5mm;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+
+.doc-kv th {
+  width: 19mm;
+  padding: 0.6mm 0;
+  text-align: left;
+  vertical-align: top;
+  font-weight: 600;
+  color: #868a9c;
+}
+
+.doc-kv td {
+  padding: 0.6mm 0;
+}
+
+.doc-sign {
+  margin-top: 12mm;
+  text-align: center;
+  break-inside: avoid;
+}
+
+.doc-sign__date {
+  margin-top: 5mm;
+  font-weight: 600;
+}
+
+.doc-sign__name {
+  margin-top: 4mm;
+  font-size: 11pt;
+}
+
+/* (인) 위에 서명 이미지를 겹쳐 찍는다 */
+.doc-sign__seal {
+  position: relative;
+  display: inline-block;
+  /* 서명 이미지가 이름을 덮지 않도록 간격 */
+  margin-left: 1mm;
+}
+
+.doc-sign__seal img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 20mm;
+  height: 15mm;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+}
+
+.doc-sign__name strong {
+  margin: 0 3mm;
+  font-size: 13pt;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 640px) {
+  .doc-header,
+  .doc-exp,
+  .doc-cols {
+    display: block;
+  }
+  .doc-header__contact {
+    margin-top: 16px;
+  }
+  .doc-stats,
+  .doc-strengths {
+    grid-template-columns: 1fr 1fr;
+  }
+  .doc-exp__aside {
+    margin-bottom: 12px;
+  }
+  /* 좁은 화면: 표는 가로 스크롤, 셀은 줄바꿈하지 않음 */
+  .doc-table--career,
+  .doc-table--log {
+    display: block;
+    overflow-x: auto;
+  }
+  .doc-table--career th,
+  .doc-table--career td,
+  .doc-table--log td {
+    white-space: nowrap;
+  }
+  .doc-table--career br {
+    display: none;
+  }
+}
+
+.doc-closing {
+  break-inside: avoid;
+}
+
+.doc-table--career tbody th,
+.doc-table--career tfoot th {
+  white-space: nowrap;
+}
+
+/* ---------- 문제 해결 사례 ---------- */
+.doc-project__role {
+  margin-top: 0.6mm;
+  font-weight: 500;
+}
+
+.doc-project__role span {
+  display: inline-block;
+  margin-right: 1.8mm;
+  padding: 0 1.6mm;
+  border-radius: 1mm;
+  background: #1d2440;
+  color: #fff;
+  font-size: 7.5pt;
+  font-weight: 700;
+  vertical-align: 0.3mm;
+}
+
+.case {
+  margin-top: 2.4mm;
+  padding: 2.4mm 3.2mm;
+  border-left: 0.8mm solid var(--accent);
+  border-radius: 0 1.5mm 1.5mm 0;
+  background: #fcf8ee;
+  break-inside: avoid;
+  font-size: 9pt;
+}
+
+.case__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1mm 2.5mm;
+}
+
+.case__title {
+  font-size: 9.8pt;
+  font-weight: 700;
+}
+
+.case__tags {
+  display: flex;
+  gap: 1mm;
+}
+
+.case__tags li {
+  font-size: 7.5pt;
+  color: #868a9c;
+}
+
+.case__tags li + li::before {
+  content: '· ';
+}
+
+.case__body {
+  display: grid;
+  gap: 0.6mm;
+  margin-top: 1.2mm;
+}
+
+.case__body > div {
+  display: grid;
+  grid-template-columns: 12mm 1fr;
+  gap: 2mm;
+}
+
+.case__body dt {
+  font-size: 8pt;
+  font-weight: 700;
+  color: #868a9c;
+  padding-top: 0.2mm;
+}
+
+.case__body dd {
+  color: #353b55;
+}
+
+.case__body li {
+  position: relative;
+  padding-left: 2.6mm;
+}
+
+.case__body li::before {
+  content: '·';
+  position: absolute;
+  left: 0.4mm;
+  font-weight: 700;
+}
+
+.case__result dd {
+  color: #1d2440;
+  font-weight: 600;
+}
+
+.doc-project--boxed .case {
+  margin-top: 2mm;
+}
+
+.doc-keycases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5mm;
+  counter-reset: kc;
+}
+
+.doc-keycases li {
+  position: relative;
+  padding: 2.6mm 3.2mm 2.6mm 9mm;
+  border: 1px solid #e8e1cf;
+  border-radius: 2mm;
+  counter-increment: kc;
+  font-size: 8.8pt;
+  break-inside: avoid;
+}
+
+.doc-keycases li::before {
+  content: counter(kc, decimal-leading-zero);
+  position: absolute;
+  left: 3.2mm;
+  top: 2.6mm;
+  font-weight: 800;
+  color: var(--accent-ink);
+}
+
+.doc-keycases__head strong {
+  display: block;
+  font-size: 9.8pt;
+}
+
+.doc-keycases__head span {
+  font-size: 7.8pt;
+  color: #868a9c;
+}
+
+.doc-keycases p {
+  margin-top: 1mm;
+  color: #353b55;
+}
+
+@media (max-width: 640px) {
+  .doc-keycases {
+    grid-template-columns: 1fr;
+  }
+  .case__body > div {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.doc-brief-cases {
+  margin-top: 1.6mm;
+  font-size: 9pt;
+  color: #353b55;
+}
+
+.doc-brief-cases strong {
+  color: #1d2440;
+}
+
+.doc-alongside {
+  display: block;
+  font-size: 7.5pt;
+  color: #868a9c;
+  white-space: nowrap;
+}
